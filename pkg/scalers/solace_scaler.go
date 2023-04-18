@@ -239,6 +239,7 @@ func parseSolaceMetadata(config *ScalerConfig) (*SolaceMetadata, error) {
 	if val, ok := config.TriggerMetadata[solaceMetaActivationMsgRxRateTarget]; ok && val != "" {
 		if activationMsgRxRateTarget, err := strconv.Atoi(val); err == nil {
 			meta.activationMsgRxRateTarget = activationMsgRxRateTarget
+		} else {
 			return nil, fmt.Errorf("can't parse [%s], not a valid integer: %w", solaceMetaActivationMsgRxRateTarget, err)
 		}
 	}
